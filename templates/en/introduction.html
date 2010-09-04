@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+
+{% block main %}
+<div class="post">
+    <h2 class="title">Introduction</h2>
+    <div style="clear: both;">&nbsp;</div>
+    <div class="entry">
+    <a name="install"></a>
+    <h3>Installation</h3>
+    <p>There are several ways to install Haanga. If you are unsure what to do, go with the tarball.</p>
+    <h4>Tarball</h4>
+    <ul>
+        <li>Download the most recent tarball from the <a href="http://github.com/crodas/Haanga/downloads">download page</a>.</li>
+        <li>Unpack the tarball</li>
+        <li>Move the <em>lib/</em> directory to your project</li>
+    </ul>
+    <h4>PEAR</h4>
+    <p>Install PEAR, and execute this from your console</p>
+    {% source_code "pear_installation.sh" %}
+    <h4>Installing the development version</h4>
+    <p>In order to install the development version, you must install <a href="http://git-scm.org/">GIT</a> locally, then execute this from you console</p>
+    {% source_code "git_clone.sh" %}
+    <h3 id="#basic">Basic usage</h3>
+
+    </div>
+</div> 
+{% endblock %}

@@ -17,8 +17,8 @@ Haanga::configure(array(
 $lang = "en";
 $menu_items = array(
     '/' => _('Home'), 
-    '/install' => _('Installation'),
-    '/documentation.php' => _('Documentation'),
+    '/documentation/Introduction#install' => _('Installation'),
+    '/documentation' => _('Documentation'),
     'http://github.com/crodas/Haanga' => _('Source code'),
 );
 

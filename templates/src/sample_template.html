@@ -1,0 +1,6 @@
+<h1>
+    Hi there, I'm {{user}}
+    {% if url %}
+        and my URL is <a href="{{url|safe}}">{{url}}</a>
+    {% endif %}
+</h1>

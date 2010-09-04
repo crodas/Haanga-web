@@ -30,12 +30,23 @@
         </ul> 
 
         <h3>Beginnings of the project</h3>
-        <p>It all started with a <a href="http://gallir.wordpress.com/">Ricardo Galli&#8217;s</a> <a href="http://twitter.com/gallir/status/16256084676">tweet</a>, <a href="http://meneame.net" target="_blank">Meneame</a> (an open source digg-like site from Spain) was looking for an efficient template engine.</p>
+        <p>It all started with a <a href="http://twitter.com/gallir/status/16256084676">tweet</a>, <a href="http://meneame.net" target="_blank">Meneame</a> (an open source digg-like site from Spain) was looking for an efficient template engine.</p>
         
         <p>A few days later I began with some outlines for the lexer, the parser and the rudimentary code generator (all the <a href="http://github.com/crodas/Haanga/tree/devel-prototype">prototype record</a> is public)</p> 
         <p>The name of the project it’s from a Guarani word –Ha’anga- which means “draw” or “shape”</p> 
         
+        <h3>Using Haanga</h3>
+        <p>In order to use Haanga into any project, <a href="/documentation/introduction#install">after install</a>, you must configure it. A basic configuration looks like this:</p>
         {% source_code "init.php" %}
+        <p>Suppose we want a template which prints a given username and a URL if it is defined:</p>
+        {% source_code "sample_template.html" %}
+        <p>Now, let's load the template from PHP:</p>
+        {% source_code "load.php" %}
+        <h3>Who are behind Haanga?</h3>
+        <ul>
+            <li><a href="http://cesarodas.com/">crodas</a>: main developer</li>
+            <li><a href="http://gallir.wordpress.org">Ricardo Galli</a>: Original idea, bug hunter, and features</li>
+        </ul>
     </div>
 </div>
 {% endblock %}

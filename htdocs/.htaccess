@@ -1,0 +1,4 @@
+RewriteEngine on
+
+RewriteRule ^documentation$ documentation.php [NC]
+RewriteRule ^documentation/(.*)$ documentation.php?doc=$1 [NC]
