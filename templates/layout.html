@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="keywords" content="php, template, templating, haanga, django" />
+<meta name="description" content="Haanga - {% trans _('über efficient template engine for PHP') %}" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="Author" content="crodas, meneame" />
+<meta name="Content-Language" content="{{lang|default:"en"}}" />
+<meta name="robots" content="index,follow, all" />
+<link href="http://assets.siterest.com/public/31/stylesheets/sunburst.css" type="text/css" media="screen" rel="stylesheet" /> 
+<script src="http://assets.siterest.com/public/31/javascripts/hightlight.pack.js" type="text/javascript"></script> 
+<script type="text/javascript">
+    hljs.initHighlightingOnLoad();
+</script>
+
+
+<title>Haanga - {% trans _('über efficient template engine for PHP') %}</title>
+<link href="/css/style.css" rel="stylesheet" type="text/css" media="screen" />
+</head>
+<body>
+<div id="wrapper">
+    <div id="header-wrapper">
+        <div id="header">
+            <div id="logo">
+                <h1><a href="#"><span>ha</span>anga  </a></h1>
+                <p>Django style for PHP</p>
+            </div>
+            <div id="menu">
+                {% block menu %}
+                <ul>
+                    {% for url, title in menu_items %}
+                    <li{% if _REQUEST.uri == url %}class="current_page_item"{% endif %}><a href="{{url}}">{{title}}</a></li>
+                    {% endfor %}
+                </ul>
+                {% endblock menu %}
+            </div>
+        </div>
+    </div>
+    <!-- end #header -->
+    <div id="page">
+        <div id="page-bgtop">
+            <div id="page-bgbtm">
+                <div id="content">
+                    {% block main%}{% endblock %}
+                    <div style="clear: both;">&nbsp;</div>
+                </div>
+                <!-- end #content -->
+                <div id="sidebar">
+                    <ul>
+                        {#
+                        <li>
+                            <div id="search" >
+                                <form method="get" action="#">
+                                    <div>
+                                        <input type="text" name="s" id="search-text" value="" />
+                                        <input type="submit" id="search-submit" value="GO" />
+                                    </div>
+                                </form>
+                            </div>
+                            <div style="clear: both;">&nbsp;</div>
+                        </li>
+                        #}
+                        <li>
+                            <h2>{% trans _('Haanga is:') %}</h2>
+                            <p><strong>{% trans _('Fast') %}:</strong> {% trans _('Haanga <em>compiles</em> down the template to plain optimized PHP code the first time. ') %} </p>
+                            <p><strong>{% trans _('Secure') %}:</strong> {% trans _('By default only a secure subset of filters/tags can be used, and no PHP code can be injected.') %} </p>
+                        </li>
+                        {#
+                        <li>
+                            <h2>Categories</h2>
+                            <ul>
+                                <li><a href="#">Aliquam libero</a></li>
+                                <li><a href="#">Consectetuer adipiscing elit</a></li>
+                                <li><a href="#">Metus aliquam pellentesque</a></li>
+                                <li><a href="#">Suspendisse iaculis mauris</a></li>
+                                <li><a href="#">Urnanet non molestie semper</a></li>
+                                <li><a href="#">Proin gravida orci porttitor</a></li>
+                            </ul>
+                        </li>
+                        #}
+                    </ul>
+                </div>
+                <!-- end #sidebar -->
+                <div style="clear: both;">&nbsp;</div>
+            </div>
+        </div>
+    </div>
+    <!-- end #page -->
+</div>
+<div id="footer">
+    <p>Copyleft (c) {% currenttime "Y" %} Meneame Comunications SL and crodas. All <em>left</em> reserved. Design by <a href="http://www.freecsstemplates.org/"> CSS Templates</a>.</p>
+</div>
+<!-- end #footer -->
+</body>
+</html>
