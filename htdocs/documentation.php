@@ -9,6 +9,7 @@ switch (strtolower($_GET['doc'])) {
 case 'introduction':
 case 'haanga-for-template-designers':
 case 'haanga-for-developers':
+case 'extending-haanga':
 case 'recipes':
     $template = strtolower($_GET['doc']).".html";
     break;

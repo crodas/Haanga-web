@@ -11,7 +11,7 @@ class Haanga_Extension_Tag_SourceCode
 
         /* disable whitespace */
         $wspace = Haanga_Compiler::getOption('strip_whitespace');
-        Haanga_Compiler::setOption('stip_whitespace', TRUE);
+        Haanga_Compiler::setOption('strip_whitespace', FALSE);
 
         $hcode = hcode();
         $cmp->do_print($hcode, "<pre><code>");
@@ -20,7 +20,7 @@ class Haanga_Extension_Tag_SourceCode
 
 
         /* restore the previous value */
-        Haanga_Compiler::setOption('stip_whitespace', $wspace);
+        Haanga_Compiler::setOption('strip_whitespace', $wspace);
 
         return $hcode;
     }
