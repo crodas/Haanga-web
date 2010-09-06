@@ -22,7 +22,15 @@
     <p>In order to install the development version, you must install <a href="http://git-scm.org/">GIT</a> locally, then execute this from you console</p>
     {% source_code "git_clone.sh" %}
     <h3 id="#basic">Basic usage</h3>
-
+    <p>The most basic setup of Haanga as follows, although <a href="/documentation/Haanga-for-Developers#configuration">there are more options</a>:</p>
+        {% source_code "init.php" %}
+    <p>Now let's create a very basic template</p>
+        {% source_code "sample_template.html" %}
+    <p>And this is how we load it from PHP and we pass variables</p>
+        {% source_code "load.php" %}
+    <p>The first time (and when the template is changed) the compiler is load in memory and template is compiled into an equivalent PHP function, this is know as the <em>worst case</em>. Later, that PHP function is saved into the filesystem, and <em>only</em> that file is used. The above template is generated in the following PHP:</p>
+        {% source_code "sample_template.html.php" %}
+    <p>As you can see the generated code is very simple, therefore optimized. </p>
     </div>
 </div> 
 {% endblock %}
