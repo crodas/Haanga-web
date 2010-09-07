@@ -12,10 +12,10 @@ function haanga_ac07567194843087cc21f6e82a6b6a0f7e5a1b97($vars, $return=FALSE, $
     $buffer1  = ' <ul> ';
     foreach ($menu_items as  $url => $title) {
         $buffer1 .= ' <li';
-        if ($_SERVER['REQUEST_URI'] == $url) {
+        if ($_SERVER['REQUEST_URI'] == $url OR (isset($select) AND $select == $url)) {
             $buffer1 .= ' class="current_page_item"';
         }
-        $buffer1 .= '><a href="'.htmlspecialchars($url).'">'.htmlspecialchars($title).'</a></li> ';
+        $buffer1 .= '> <a href="'.htmlspecialchars($url).'">'.htmlspecialchars($title).'</a></li> ';
     }
     $buffer1 .= ' </ul> ';
     echo (isset($blocks['menu']) ? (strpos($blocks['menu'], '{{block.1b3231655cebb7a1f783eddf27d254ca}}') === FALSE ? $blocks['menu'] : str_replace('{{block.1b3231655cebb7a1f783eddf27d254ca}}', $buffer1, $blocks['menu'])) : $buffer1).' </div> </div> </div> <!-- end #header --> <div id="page"> <div id="page-bgtop"> <div id="page-bgbtm"> <div id="content"> ';

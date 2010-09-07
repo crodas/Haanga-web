@@ -41,7 +41,8 @@
                 {% block menu %}
                 <ul>
                     {% for url, title in menu_items %}
-                    <li{% if _SERVER.REQUEST_URI == url %} class="current_page_item"{% endif %}><a href="{{url}}">{{title}}</a></li>
+                    <li{% if _SERVER.REQUEST_URI == url OR (select|exists AND select == url) %} class="current_page_item"{% endif %}>
+                    <a href="{{url}}">{{title}}</a></li>
                     {% endfor %}
                 </ul>
                 {% endblock menu %}

@@ -21,4 +21,4 @@ default:
     die();
 }
 
-Haanga::Load($lang.'/'.$template);
+Haanga::Load($lang.'/'.$template, array('select' => '/documentation'));

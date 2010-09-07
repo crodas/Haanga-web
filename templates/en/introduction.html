@@ -37,7 +37,6 @@
     {% source_code "sample_compilation.php" %}
     <p>This might be useful to evaluate "un-safe" templates, think in a template editor, a test-before-save would look like this:</p>
     {% source_code "compilation_unsafe.php" %}
-    </div>
     <h3>IDEs integration</h3>
     <p>Because we are full compatible with Django templates, any editor that works with Django will work with Haanga, for instance if you use Vim <a href="http://code.djangoproject.com/wiki/UsingVimWithDjango">this page might help</a></p>
     <h3>Variables</h3>
@@ -60,10 +59,27 @@
     <p><em>At run time, we do never check if a variable exists (for simplicity and performance reasons). It is your responsibility to handle 
     undeclared variables. Also we never check for variable types (whether a variable is an array or an object) this is already pretty 
     common on the PHP world.</em></p>
+    <h3>Autoescape</h3>
+    <em>By default autoescape is activated as in django</em>
+    {% source_code "autoescape.html" %}
+    <p>In this case, if <code>variable</code> is "<code>&lt;br /&gt;string</code>", the output will be:</p>
+    {% source_code "autoescape_return.html" %}
+    <p>As you can see, Haanga won't do a double escape in the third case.</p>
     <h3>Filters</h3>
     <p>Variables can be modified by <strong>Filters</strong>. Filters are separated by a pipe symbol (<code>|</code>), 
     and may have <em>one</em> optional argument (<em>Django's limitation AFAIK</em>). Multiple filters can be chained.
     The output of one filter is applied to the next.</p>
     {% source_code "filters.html" %}
+    <p>A key feature of Haanga is that Filters can generate code, and most of them does generate code indeed. By doing this
+    write custom Filters is a bit hardest, but there is a lot of performance gained since we do not to load the definition of the 
+    filters per every request. The generated code is almost <em>self-contained</em>.</p>
+    <p>List of built-in filters:</p>
+    <ul>
+        <li>upper</li>
+        <li>lower</li>
+        <li>safe: Set a given variable as safe (to avoid escaping when autoescape is on)</li>
+        <li>escape</li>
+    </ul>
+    </div>
 </div> 
 {% endblock %}
