@@ -31,6 +31,39 @@
     <p>The first time (and when the template is changed) the compiler is load in memory and template is compiled into an equivalent PHP function, this is know as the <em>worst case</em>. Later, that PHP function is saved into the filesystem, and <em>only</em> that file is used. The above template is generated in the following PHP:</p>
         {% source_code "sample_template.html.php" %}
     <p>As you can see the generated code is very simple, therefore optimized. </p>
+    <h3>Evaluating templates at run-time</h3>
+    <p>Haanga also provides a way to evaluate templates "at run-time", this means that any string-template is compiled to a PHP function. The usage of this feature is not
+    recommended because there is no-way to cache the string and avoid repetitive compilations.</p>
+    {% source_code "sample_compilation.php" %}
+    <p>This might be useful to evaluate "un-safe" templates, think in a template editor, a test-before-save would look like this:</p>
+    {% source_code "compilation_unsafe.php" %}
     </div>
+    <h3>IDEs integration</h3>
+    <p>Because we are full compatible with Django templates, any editor that works with Django will work with Haanga, for instance if you use Vim <a href="http://code.djangoproject.com/wiki/UsingVimWithDjango">this page might help</a></p>
+    <h3>Variables</h3>
+    <p>Inside the templates you can access to elements and properties of arrays and objects. You can use (.) to access attributes of objects, or you can 
+    use the "subscript" syntax ([]) to access array elements.</p>
+    <p>At compile time, Haanga's compiler will generate code to access an object or an array based on the context. If a variable is not 
+    found at compile time it will be assumed that it is an object if "." is used, otherwise it will treated as an array. 
+    <em>Context</em> are variables that are passed to the template.</p>
+    <p>The following code will generate array <code>foo</code>, and object <code>bar</code> <em>by default</em></p>
+    {% source_code "variables.html" %}
+    <p>Nevertheless if <code>foo</code> is an object at compile time, then will be treated as an object, also if <code>bar</code> is
+    an array, even if it uses dot notation it will be treated as an array.</p>
+    <p>In other words, for every array/object Haanga will do this:</p>
+        <ul>
+            <li>Check if the variable is an array or object</li>
+            <li>If we can't find at compile time, use the default value (<code>.</code> as object and <code>[]</code> as array)</li>
+        </ul>
+    <p>This checking is recursive, so you can do something like this safely:</p>
+    {% source_code "variables_nested.html" %}
+    <p><em>At run time, we do never check if a variable exists (for simplicity and performance reasons). It is your responsibility to handle 
+    undeclared variables. Also we never check for variable types (whether a variable is an array or an object) this is already pretty 
+    common on the PHP world.</em></p>
+    <h3>Filters</h3>
+    <p>Variables can be modified by <strong>Filters</strong>. Filters are separated by a pipe symbol (<code>|</code>), 
+    and may have <em>one</em> optional argument (<em>Django's limitation AFAIK</em>). Multiple filters can be chained.
+    The output of one filter is applied to the next.</p>
+    {% source_code "filters.html" %}
 </div> 
 {% endblock %}

@@ -13,8 +13,15 @@ class Haanga_Extension_Tag_SourceCode
         $wspace = Haanga_Compiler::getOption('strip_whitespace');
         Haanga_Compiler::setOption('strip_whitespace', FALSE);
 
+        if (substr($file, -4) == 'html') {
+            $class = 'django';
+        } else {
+            $class = 'php';
+        }
+
         $hcode = hcode();
-        $cmp->do_print($hcode, "<pre><code>");
+        $cmp->do_print($hcode, "<pre>");
+        $cmp->do_print($hcode, "<code class='$class'>");
         $cmp->do_print($hcode, htmlspecialchars(file_get_contents($file)));
         $cmp->do_print($hcode, "</code></pre>");
 
